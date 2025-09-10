@@ -24,8 +24,9 @@ graph.add_edge("process", END)
 agent = graph.compile()
 
 user_input = input("Prompt: ")
-
-agent.invoke({"message": [HumanMessage(content=user_input)]})
+while user_input.strip() == "" or user_input.lower() == "exit":
+    agent.invoke({"message": [HumanMessage(content=user_input)]})
+    user_input = input("Prompt: ")
 
 """
 Prompt: What is computer science?
